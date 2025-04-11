@@ -1,13 +1,12 @@
 import mongoose from "mongoose"; 
-import dotenv from "dotenv";
-dotenv.config();
+
 const connectDb = async () => {
     mongoose.connection.on("connected", () => {
         console.log("MongoDB connected successfully");
     });
 
     try {
-        await mongoose.connect(`${process.env.MONGODB_URI}/resumebuilder`, {
+        await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true, 
             useUnifiedTopology: true
         });
